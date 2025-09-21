@@ -1,0 +1,10 @@
+---
+title: Link
+layout: default
+description: "「条条大路通罗马 但是你要有地图先」"
+header-img: "img/bg-map.jpg"
+---
+<div class="zh post-container">
+	{% capture link %}{% include link/link.md %}{% endcapture %}
+	{{ link | markdownify }}
+</div>
