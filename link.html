@@ -4,19 +4,9 @@ layout: default
 description: "「条条大路通罗马 但是你要有地图先」"
 header-img: "img/bg-map.jpg"
 ---
-
-{% include multilingual-sel.html %}
-
-<!-- Chinese Version -->
-<div class="zh post-container">
-	{% capture about_zh %}{% include about/zh.md %}{% endcapture %}
-	{{ about_zh | markdownify }}
-</div>
-
-<!-- English Version -->
-<div class="en post-container">
-	{% capture about_en %}{% include about/en.md %}{% endcapture %}
-	{{ about_en | markdownify }}
+<div class="post-container">
+	{% capture link %}{% include link/link.md %}{% endcapture %}
+	{{ link | markdownify }}
 </div>
 
 
