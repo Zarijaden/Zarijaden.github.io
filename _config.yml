@@ -73,7 +73,7 @@ sidebar-about-description: "要做一个热爱生活的人"
 sidebar-avatar: https://avatars.githubusercontent.com/u/227128491 # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
-featured-tags: true # whether or not using Feature-Tags
+featured-tags: false # whether or not using Feature-Tags
 featured-condition-size: 1 # A tag will be featured if the size of it is more than this condition value
 
 # Progressive Web Apps
