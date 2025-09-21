@@ -1,8 +1,8 @@
 # Site settings
 title: Zarijaden Blog
 SEOTitle: Zarijaden的博客 | Zarijaden Blog
-header-img: img/home-bg.jpg
-email: huxpro@gmail.com
+header-img: https://avatars.githubusercontent.com/u/227128491
+email: Zarijaden@163.com
 description: "这里是 @Zarijaden 的个人博客，与你一起发现更大的世界 | 要做一个热爱生活的人 "
 keyword: "MC"
 url: "https://zarijaden.github.io" # your host, for absolute URL
