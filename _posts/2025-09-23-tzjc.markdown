@@ -2,7 +2,7 @@
 layout:        post
 title:         "如何使用梯子进行攀爬"
 author:        "Zarijaden"
-header-img:    "img/post-bg-tzjc"
+header-img:    "img/post-bg-tzjc.jpeg"
 tags:
     - 科技
     - 教程
