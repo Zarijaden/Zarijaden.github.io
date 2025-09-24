@@ -1,0 +1,13 @@
+---
+layout:         post
+title:          "HuxBlog的结构探索"
+author:         "Zarijaden"
+header-style:   text
+tags:
+ - 日志
+---
+#初步<br>
+  一开始我只敢动_config.yml。但是根本不够用，后面还涉及到删文章，就去翻文件树，这个很好找，毕竟东西不多。在post夹里面，我全删了。
+#进一步<br>
+然后我就_俺寻思_，要拓展页面，页面导航就需要顶部的导航栏（navbar，从浏览器f12开发者模式翻到的）。HOME，ABOUT，ARCHIVE和一个搜索按钮。我又翻，在根目录下，很明显有404.html，about.html，archive.html，都是可以以zarijaden.github.io后面加/about这种方式进入的...但我翻不到navbar，很奇怪，还好IDEA有随处搜索，我一搜，就在_include夹里找到了nav.html（其实花了很长时间，因为结构太复杂了）但是我没看懂啊，我搜到了还是没懂，后面又乱搜，直接就搜到了一个标记——hide-in-nav。我有点懵，我一直以为导航栏是白名单制，毕竟页面多起来就方便管理，没想到啊没想到，是黑名单制，在根目录下的页面里面，比如404.html就有“hide-in-nav=true”，原来都是默认显示的。<br>
+我第二天找的时候，大彻大悟他的结构。是根目录下的页面会使用_layout夹里面的模板，模板里面会引用_include夹里面的html，一个页面是分成很多个部分的，比如，主页分成head，nav，footer，sidebar（shortabout，friends，featuretags）这样。另外，就像sidebar那样，_include夹里面的html还会互相引用。这就构成了huxblog里面的页面。
