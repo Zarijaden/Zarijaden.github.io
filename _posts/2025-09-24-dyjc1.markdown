@@ -1,0 +1,16 @@
+---
+layout:          post
+title:           "德语第一课讲义”
+author:          "Zarijaden"
+header-style:    text
+tags:
+ - 教程
+---
+| 语法点       | 类型/规则                | 例子（德语） | 例子（中文）       | 发音（国际音标）       |
+|--------------|--------------------------|--------------|--------------------|------------------------|
+| 名词性别     | 阳性（der）              | der Mann     | 男人               | /deːɐ̯ man/            |
+|              | 阴性（die）              | die Frau     | 女人               | /diː fʁaʊ̯/            |
+|              | 中性（das）              | das Kind     | 孩子               | /das kɪnt/             |
+| 不定冠词     | ein（阳性/中性）         | ein Mann     | 一个男人           | /aɪn man/              |
+|              | eine（阴性）             | eine Frau    | 一个女人           | /ˈaɪnə fʁaʊ̯/          |
+| 基础句子     | 陈述句（主语+系动词+表语）| Das ist ein Mann. | 这是一个男人。 | /das ɪst aɪn man/      |
