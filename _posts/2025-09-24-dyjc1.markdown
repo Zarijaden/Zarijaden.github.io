@@ -1,6 +1,6 @@
 ---
 layout:          post
-title:           "德语第一课讲义”
+title:           "德语第一课讲义"
 author:          "Zarijaden"
 header-style:    text
 tags:
@@ -14,3 +14,7 @@ tags:
 | 不定冠词     | ein（阳性/中性）         | ein Mann     | 一个男人           | /aɪn man/              |
 |              | eine（阴性）             | eine Frau    | 一个女人           | /ˈaɪnə fʁaʊ̯/          |
 | 基础句子     | 陈述句（主语+系动词+表语）| Das ist ein Mann. | 这是一个男人。 | /das ɪst aɪn man/      |
+|              | 疑问句（动词首位）       | Ist das ein Mann? | 这是一个男人吗？ | /ɪst das aɪn man/      |
+|              | 否定句（nicht + 系动词） | Das ist nicht mein Buch. | 这不是我的书。 | /das ɪst nɪçt maɪn buːx/ |
+|              | 带形容词的陈述句         | Der Mann ist groß. | 这个男人很高。 | /deːɐ̯ man ɪst ɡʁoːs/  |
+|              | 所属关系（物主冠词）     | Das ist ihre Katze. | 这是她的猫。 | /das ɪst ˈiːʁə ˈkat͡sə/ |
