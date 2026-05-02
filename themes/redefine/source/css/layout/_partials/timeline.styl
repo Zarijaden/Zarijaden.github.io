@@ -1,0 +1,68 @@
+.timeline-page
+  padding 40px 20px
+
+.timeline-container
+  max-width 800px
+  margin 0 auto
+
+.timeline-item
+  display flex
+  margin-bottom 30px
+  position relative
+
+  // 中间的那条竖线（可选，增加一点设计感）
+  &:not(:last-child)::after
+    content ''
+    position absolute
+    left 35px
+    top 45px
+    bottom -25px
+    width 2px
+    background-color var(--bg-secondary)
+
+.timeline-date
+  min-width 70px
+  text-align right
+  padding-right 20px
+  color var(--text-secondary)
+  font-size 0.9em
+  position relative
+
+  // 日期前面的圆点
+  &::before
+    content ''
+    position absolute
+    right -6px
+    top 50%
+    transform translateY(-50%)
+    width 10px
+    height 10px
+    border-radius 50%
+    background-color var(--btn-bg)
+    border 2px solid var(--bg-main)
+
+.timeline-content
+  flex 1
+
+.timeline-title
+  font-size 1.1em
+  font-weight bold
+  color var(--text-main)
+  text-decoration none
+  transition color 0.2s
+
+  &:hover
+    color var(--btn-hover-bg)
+    text-decoration underline
+
+.timeline-desc
+  font-size 0.85em
+  color var(--text-secondary)
+  margin-top 6px
+  line-height 1.6
+  padding-left 5px
+
+.empty-tips
+  text-align center
+  color var(--text-disabled)
+  padding 50px 0
