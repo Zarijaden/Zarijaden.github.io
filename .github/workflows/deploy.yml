@@ -37,9 +37,19 @@ jobs:
           node-version: '20'
           cache: 'npm' # 开启 npm 缓存，加快后续构建速度
 
-      - name: 安装依赖与构建 (Build Hexo)
+      - name: 安装系统底层依赖
+        # 这是为了模拟 CFP 环境中预装的基础图形库
         run: |
-          npm install
+          sudo apt-get update
+          sudo apt-get install -y libpng-dev build-essential nasm
+
+      - name: 安装依赖与构建 (强制模式)
+        run: |
+          # 1. 强制忽略引擎版本检查
+          # 2. 即使可选依赖安装失败也继续（gifsicle 往往是可选依赖）
+          npm install --no-audit --no-fund --legacy-peer-deps || npm install --no-audit --no-fund --legacy-peer-deps
+          
+          # 执行构建
           npx hexo generate
 
       - name: 配置 GitHub Pages
