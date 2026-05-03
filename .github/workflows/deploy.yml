@@ -1,49 +1,55 @@
-name: Deploy Hexo site to Pages
+name: Deploy Hexo to GitHub Pages
 
 on:
-  # 当代码推送到 main 分支时触
-  # 允许从 Actions 标签页手动触发此工作流
-  workflow_dispatch:
+  push:
+    branches:
+      - main # 触发部署的分支。如果你的源代码主分支叫 master，请将其改为 master
 
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
+# 赋予 Action 部署到 GitHub Pages 所需的最高权限
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
-# 并发控制：同一时间只允许一个部署运行，但不取消正在进行的部署
+# 限制并发部署，避免旧版本覆盖新版本
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # 构建任务
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
+      - name: 检出代码 (Checkout Repository)
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # 如果您的 Hexo 主题是作为 Git 子模块引入的，请启用此项
-          fetch-depth: 0         # 获取完整的历史记录，有助于 hexo 的某些插件正常工作
+          # 如果你的 island 主题或其他插件是通过 git clone 引入的子模块，这行保证它们能被正确拉取
+          submodules: 'recursive' 
+          fetch-depth: 0
 
-      - name: Setup Node.js
-        # 参考 Jekyll 示例中的版本锁定方式
+      - name: 设置 Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '20'     # 指定 Node.js 版本，建议与本地开发环境一致
-          cache: 'npm'           # 缓存 npm 依赖，显著加快后续构建速度
+          node-version: '20'
+          cache: 'npm' # 开启 npm 缓存，加快后续构建速度
 
-      - name: Install Dependencies
-        run: npm install             # 使用 `npm ci` 而非 `npm install`，确保依赖版本与 lockfile 完全一致，构建更可靠
-
-      - name: Build with Hexo
-        # Hexo 默认构建命令，输出目录为 ./public
-        run: hexo d
-      - name: Push
+      - name: 安装依赖与构建 (Build Hexo)
         run: |
-            git config user.name Zarijaden
-            git config user.email zarijaden@gmail.com
-            git add .
-            git commit -m "update"
-            git push
+          npm install
+          npx hexo generate
+
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: 上传构建产物 (Upload Artifact)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public' # Hexo 默认生成的静态文件目录
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
