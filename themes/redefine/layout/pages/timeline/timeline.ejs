@@ -26,8 +26,9 @@
             <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is="<%= item.time.substring(5) %>">
               <% if (item.link) { %>
                 <a href="<%= item.link %>" target="_blank" rel="noopener" class="block w-fit">
-                  <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
-                </a>
+                <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
+                <i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i>
+</a>
               <% } else { %>
                 <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
               <% } %>
