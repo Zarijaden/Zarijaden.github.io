@@ -97,7 +97,6 @@ hexo.extend.helper.register("getAllPageData", function () {
 hexo.extend.helper.register("getPageData", function (page) {
 	if (this.is_home()) return pageData.home;
 	if (this.is_archive()) return pageData.archive;
- if (this.is_timeline()) return pageData.timeline;
 	if (this.is_post()) return pageData.post;
 	if (this.is_category()) return pageData.categoryDetail;
 	if (this.is_tag()) return pageData.tagDetail;
@@ -127,8 +126,6 @@ hexo.extend.helper.register("getPagePartialPath", function (page) {
 			return config.partial;
 		} else if (this.is_archive() && pageData.archive.layout === "raw") { // return raw layout for archive page
 			return pageData.archive.partial;
-		} else if (this.is_timeline() && pageData.timeline.layout === "raw") { // return raw layout for archive page
-			return pageData.timeline.partial;
 		} else if (this.is_category() && pageData.categoryDetail.layout === "raw") { // return raw layout for category page
 			return pageData.categoryDetail.partial;
 		} else if (this.is_tag() && pageData.tagDetail.layout === "raw") { // return raw layout for tag page
@@ -146,7 +143,6 @@ hexo.extend.helper.register("getPageTitle", function (page) {
 	// Determine the type based on page properties
 	if (this.is_home()) type = "home";
 	else if (this.is_archive()) type = "archive";
- else if (this.is_timeline()) type = "timeline";
 	else if (this.is_post()) type = "post";
 	else {
 		type = pageData.type;
