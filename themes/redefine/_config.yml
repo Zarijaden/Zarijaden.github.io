@@ -233,6 +233,9 @@ navbar:
     相册:
       icon: fa-solid fa-image #图标
       path: /masonry/
+    时间轴:
+      icon: fa-solid fa-code-branch #图标
+      path: /timeline/
     gh链接转换器:
       icon: fa-brands fa-cloudflare
       path: /gh-cf/
