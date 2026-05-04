@@ -22,6 +22,12 @@ const pageData = {
 		partial: "pages/archive/archive",
 		layout: "raw",
 	},
+timeline: {
+  titles: ["timeline", "时间轴"],
+  types: ["timeline", "timelines"],
+  partial: "pages/timeline/timeline",
+  layout: "raw",
+ },
 	post: {
 		titles: ["post", "文章"],
 		types: ["post", "posts"],
