@@ -28,7 +28,7 @@ const pageData = {
 		partial: "pages/post/article-content",
 		layout: "raw",
 	},
-    timeline: {
+        timeline: {
         titles: ["timeline", "时间轴", "网站历史"],
         types: ["timeline"],
         partial: "pages/timeline/timeline",
