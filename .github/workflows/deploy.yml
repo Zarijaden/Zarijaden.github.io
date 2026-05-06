@@ -1,50 +1,50 @@
 name: Hexo Deploy to GitHub Pages
 
 on:
-  # 当推送到 main (或 master) 分支时触发
   push:
     branches:
       - main  # 如果你的默认分支是 master，请改为 master
-  # 允许你从 Actions 选项卡手动触发部署
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    # 1. 检出源代码
     - name: Checkout Source Code
       uses: actions/checkout@v4
-     # with:
-        # 如果你使用了子模块（例如主题），需要取消注释下一行
-        # submodules: 'recursive'
+      # with:
+      #   submodules: 'recursive'
 
-    # 2. 配置 Node.js 环境
     - name: Setup Node.js 20
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'  # 自动缓存 npm 依赖，加快构建速度
+        cache: 'npm'
 
-    # 3. 安装项目依赖
     - name: Install Dependencies
-      run: npm ci  # 使用 ci 命令，基于 package-lock.json 干净安装
+      run: npm ci
 
-    # 4. 生成静态文件
+    # 🆕 关键改动：修改 root 路径为 /blog/
+    - name: Fix root path for GitHub Pages
+      run: |
+        # 先把原始的 _config.yml 备份一下（可选，不备份也没事，因为只在 CI 环境里改动）
+        # 把 root: / 替换成 root: /blog/
+        sed -i 's|^root: /$|root: /blog/|' _config.yml
+        # 验证一下修改结果（方便调试，可以在 Actions 日志里看到）
+        echo "修改后的 root 配置："
+        grep "^root:" _config.yml || echo "⚠️ 未找到 root 配置"
+
     - name: Generate Static Files
       run: npx hexo generate
 
-    # 5. 部署到 gh-pages 分支
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动提供的令牌
-        publish_branch: gh-pages  # 部署目标分支
-        publish_dir: ./public      # Hexo 生成的静态文件目录
-        # 保留提交历史（可选）
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./public
         force_orphan: false
-        # 自定义提交用户信息（可选）
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         commit_message: 'Auto-deploy by GitHub Actions [skip ci]'
