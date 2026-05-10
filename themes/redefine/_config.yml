@@ -319,7 +319,7 @@ articles:
   word_count:
     enable: true # Whether to enable
     count: true # Whether to display word count
-    min2read: true # Whether to display reading time
+    min2read: false # Whether to display reading time
   # Author label
   author_label: 
     enable: false # Whether to enable
