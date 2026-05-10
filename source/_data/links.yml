@@ -1,4 +1,4 @@
-- links_category: Friends
+- links_category: 朋友们
   has_thumbnail: false
   list:
     - name: Zeropersan
@@ -10,4 +10,12 @@
       link: https://steven.wuaze.com/
       description: Steven_mc的论坛（匿名发帖）
       avatar: /images/stvicon.jpg
+      thumbnail:
+- links_category: 志同道合
+  has_thumbnail: false
+  list:
+    - name: 追光者
+      link: https://blog.lczhuigz.top/
+      description: You Only Live Once
+      avatar: https://blog.lczhuigz.top/images/fav-icon/fav-icon.jpg
       thumbnail:
