@@ -1,26 +1,26 @@
 # Masonry gallery configuration 
 - image: /images/masonry/IMG_20260315_184444.jpg 
-  exif: true
+  exif: 
   title: 
   description: 
 - image: /images/masonry/IMG_20260404_172504.jpg 
-  exif: true
+  exif: 
   title: 
   description: 
 - image: /images/masonry/IMG_20260404_172521.jpg 
-  exif: true
+  exif: 
   title: 
   description: 
 - image: /images/masonry/IMG_20260404_173551.jpg 
-  exif: true
+  exif: 
   title: 
   description: 
 - image: /images/masonry/IMG_20260404_173637.jpg 
-  exif: true
+  exif: 
   title: 
   description: 
 - image: /images/masonry/IMG_20260404_173656.jpg 
-  exif: true
+  exif: 
   title: 
   description: 
 - image: /images/masonry/2025-01-26_12.47.16.webp 
@@ -43,39 +43,7 @@
   exif: 
   title: 
   description: 
-- image: /images/masonry/2025-01-29_16.06.27.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_16.06.39.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_16.06.45.webp 
-  exif: 
-  title: 
-  description: 
 - image: /images/masonry/2025-01-29_16.43.07.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_19.03.48.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_19.08.27.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_19.09.52.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_19.10.28.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-01-29_19.25.09.webp 
   exif: 
   title: 
   description: 
@@ -84,10 +52,6 @@
   title: 
   description: 
 - image: /images/masonry/2025-02-10_17.42.04.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/2025-02-10_17.42.06.webp 
   exif: 
   title: 
   description: 
@@ -232,10 +196,6 @@
   title: 
   description: 
 - image: /images/masonry/freecompress-2024-08-30_11.46.58.webp 
-  exif: 
-  title: 
-  description: 
-- image: /images/masonry/freecompress-2024-09-22_16.39.22.webp 
   exif: 
   title: 
   description: 
