@@ -232,12 +232,13 @@ navbar:
     时间轴:
       icon: fa-solid fa-code-branch #图标
       path: /timeline/
-    gh链接转换器:
-      icon: fa-brands fa-cloudflare
-      path: /gh-cf/
-    设置:
-      icon: fa-solid fa-gear
-      path: /hpp/admin/login
+    更多: 
+        gh链接转换器:
+          icon: fa-brands fa-cloudflare
+          path: /gh-cf/
+        设置:
+          icon: fa-solid fa-gear
+          path: /hpp/admin/login
     #   submenus:
     #     Link1: /link1
     #     Link2: /link2
