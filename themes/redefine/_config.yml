@@ -137,7 +137,30 @@ home_banner:
   title: Zarijaden Blog
   # Home banner subtitle
   subtitle:
-    text: ["万","万物","万物可","万物可爱","万物可爱，","万物可爱，生","万物可爱，生活","万物可爱，生活明","万物可爱，生活明朗"] # subtitle text, array
+    text: [
+  "万",
+  "万物",
+  "万物可",
+  "万物可爱",
+  "万物可爱，",
+  "万物可爱，生",
+  "万物可爱，生活",
+  "万物可爱，生活明",
+  "万物可爱，生活明朗",
+  "不",
+  "不以",
+  "不以物",
+  "不以物喜",
+  "不以物喜，",
+  "不以物喜，不以",
+  "不以物喜，不以己",
+  "不以物喜，不以己悲",
+  "坐",
+  "坐和",
+  "坐和放",
+  "坐和放宽"
+]
+ # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       show_author: false # Whether to show author
