@@ -1,0 +1,249 @@
+---
+title:        "Github + Hexo 自动同步部署，一次酣畅淋漓的 Actions 实战"
+author:       "Zarijaden"
+date: 2026-06-13
+tags:
+    - 实践
+    - Github
+---
+# 前言
+
+目标：
+我有两个博客仓库，一个为Github Pages服务，另一个由于改名会出大问题，只为Cloudflare Pages服务。
+让我的 Hexo 博客仓库定期同步上游更新，同时保证自己的部署流程不被破坏。
+
+结局是好的：
+
+- ✅ 自动同步
+
+- ✅ 自动部署
+
+- ✅ 零残留、零回滚
+
+下面是完整复盘。
+
+# 一、开局翻车：拼错仓库名
+
+最早我使用的是AI推荐的 Fork-Sync Action：
+`
+uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+`
+结果第一条报错就。。。出师不捷啊：
+```
+remote: Repository not found.
+fatal: repository 'https://github.com/Zarijaden/blig.git/' not found
+```
+原因非常尴尬：
+
+我把 
+"blog" 拼成了 
+"blig"。。。
+
+# 二、GitHub 不能 fork 自己
+
+我一直觉得反正库的内容一样，那凭啥没法同步呢？但实际上忽略了一条硬性规则：
+
+GitHub 不允许 fork 自己的仓库。
+于是下面这行条件从一开始就注定失败：
+`
+if: ${{ github.event.repository.fork }}
+`
+Actions 的表现也很诚实：
+`
+Job skipped
+`
+删掉这行后，工作流终于开始运行。
+
+# 三、Git 的血缘拒绝：unrelated histories
+
+仓库名对了，fork 条件也删了，但紧接着迎面撞上 Git 的核心哲学：
+`
+fatal: refusing to merge unrelated histories
+`
+原因很简单：
+
+- 我的仓库不是 GitHub 意义上的 fork
+- 历史树是独立创建的
+- upstream 和本地完全没有共同祖先
+
+Fork-Sync Action 本质上是：
+`
+git merge upstream/main
+`
+没有血缘关系？
+
+直接拒绝。
+
+# 四、暴力破局：reset --hard
+
+既然 merge 走不通，那就换个思路：
+
+直接让两个仓库在完全一致。
+于是我下了狠手：
+```
+git fetch upstream
+git reset --hard upstream/main
+git push origin main --force
+```
+效果非常震撼：
+
+- ✅ 提交历史完全一致
+
+- ✅ 没有任何 upstream 残留痕迹
+
+- ✅ 两个仓库像是从同一个模板刻出来的
+
+代价是：
+
+我自己的 workflow ，以及它的提交历史被一起抹掉了。
+
+# 五、最后阴险的隐藏坑
+
+我以为 Git 层面的问题已经全部解决，结果日志又给了我一巴掌：
+、
+Input required and not supplied: token
+、
+当时我的第一反应是：
+
+？？？我明明生成了 PAT 啊？？？
+真相非常冷酷
+
+我在 workflow 里写的是：
+```
+- uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+    token: ${{ secrets.SYNC_TOKEN }}
+```
+但我 根本没有在仓库里创建这个 Secret。
+
+也就是说：
+
+- ✅ PAT 生成了
+- ❌ 没放进仓库 Secrets
+- ❌ 
+"secrets.SYNC_TOKEN" 实际是 
+"undefined"
+
+GitHub Actions 的规则非常严格：
+
+找不到的 secret 不是空值，而是直接报错。
+于是整个 job 在 checkout 阶段直接挂掉。
+
+正确姿势
+**
+进仓库Settings → Secrets and variables → Actions
+新建 Secret→
+Name: SYNC_TOKEN
+Value: ghp_xxxxxxxx
+**
+# 六、最终胜利：Hexo 部署稳稳落地
+
+在所有历史对齐、权限问题解决之后，终版自动同步是这里这份workflow：
+```name: Upstream Sync
+
+permissions:
+    contents: write
+
+on:
+    schedule:
+        - cron: "0 17 * * 5"
+    workflow_dispatch:
+
+jobs:
+    sync_with_upstream:
+        name: Sync with Upstream
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout target repo
+              uses: actions/checkout@v3
+
+            - name: Sync Upstream
+              uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+              with:
+                  target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+                  upstream_sync_repo: Zarijaden/blog
+                  upstream_sync_branch: main
+                  target_sync_branch: main
+                  test_mode: false
+
+            - name: Check for Failure
+              if: failure()
+              run: |
+                  echo "[Error] Due to a change in the workflow file of the upstream repository, GitHub has automatically suspended the scheduled automatic update. You need to manually sync your fork."
+                  exit 1```
+博客自动部署的，是下面这份 workflow：
+```
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npx hexo --version
+
+      - name: Generate static files
+        run: npx hexo generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
+```
+
+# 七、关键认知总结
+
+这次实践之后，AI帮我理清了几件事：
+
+1. 上流仓库不会帮你同步，只能你主动拉
+2. fork ≠ 同步，历史关系才是关键
+3. reset --hard 是核武器，确实能清场但后果严重
+4. workflow 是部署主权，不能被上游覆盖
+5. Secrets 没落地，YAML 写得再对也没用
+6. Hexo 的正确姿势：
+"main = 源码，gh-pages = 成品"
+
+# 结语
+
+从拼错仓库名，到 unrelated histories，再到 Secrets 隐形暴击，
+
+这一整套流程走下来，其实只有一个核心：
+
+自动化不是交给工具，而是你先想清楚边界。
+现在再看这个绿油油的 Actions 面板，只有一个感觉：
+
+**酣畅淋漓，大获成功。**
