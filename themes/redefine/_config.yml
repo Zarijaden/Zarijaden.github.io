@@ -178,7 +178,7 @@ home_banner:
     starting_delay: 16 # Start delay (ms)
     backing_delay: 1500 # Backing delay (ms)
     loop: true # Whether to loop
-    smart_backspace: true # Whether to smart backspace
+    smart_backspace: false # Whether to smart backspace
   # Color of home banner text
   text_color: 
     light: "#fff" # light mode
