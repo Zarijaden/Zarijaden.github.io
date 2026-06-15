@@ -147,22 +147,24 @@ home_banner:
   "万物可爱，生活",
   "万物可爱，生活明",
   "万物可爱，生活明朗",
+  "",
   "不",
   "不以",
   "不以物",
   "不以物喜",
   "不以物喜，",
+  "不以物喜，不",
   "不以物喜，不以",
   "不以物喜，不以己",
   "不以物喜，不以己悲",
+  "",
   "坐",
   "坐和",
   "坐和放",
   "坐和放宽",
+  "",
   "lo",
-  "lo ",
   "lo and",
-  "lo and ",
   "lo and behold"
 ]
 
@@ -171,7 +173,7 @@ home_banner:
       enable: false # Whether to enable hitokoto
       show_author: false # Whether to show author
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
-    typing_speed: 16 # Typing speed (ms)
+    typing_speed: 8000 # Typing speed (ms)
     backing_speed: 80 # Backing speed (ms)
     starting_delay: 16 # Start delay (ms)
     backing_delay: 1500 # Backing delay (ms)
