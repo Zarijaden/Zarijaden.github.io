@@ -24,3 +24,16 @@
       description: 
       avatar: https://raw.githubusercontent.com/lalalll-lalalll/lalalll-lalalll.github.io/refs/heads/master/favicon.ico
       thumbnail: 
+    - name: 桑葚不太甜
+      link: https://ssbtt114514.github.io/
+      description: 
+      avatar: 
+      thumbnail: 
+- links_category: 浪花（上网冲浪时的风景）
+  has_thumbnail: false
+  list:
+    - name: CFITSec
+      link: https://cfitsec.cn
+      description: 
+      avatar: https://cfitsec.cn/favicon.ico
+      thumbnail:
