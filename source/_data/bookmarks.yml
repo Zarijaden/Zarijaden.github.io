@@ -38,7 +38,10 @@
     - name: Freev2ray
       link: https://freev2ray.cc/
       description: 
-      image: https://freev2ray.cc/favicon.ico
+    - name: 米贝分享
+      link: https://www.mibei77.com/
+      description: 
+      image: https://www.mibei77.com/wp-content/uploads/2026/04/2026040203154996.png
     - name: Shareclash
       link: https://shareclash.com/
       description: 
