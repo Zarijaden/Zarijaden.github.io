@@ -8,9 +8,6 @@ permissions:
 on:
   schedule:
     - cron: "0 17 * * 5"
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 concurrency:
