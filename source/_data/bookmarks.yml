@@ -65,10 +65,6 @@
       link: https://www.wenshushu.cn/
       description: 传文件，快捷
       image: https://www.wenshushu.cn/favicon.ico
-    - name: Snapdrop
-      link: https://www.snap-drop.net/images/favicon-96x96.png
-      description: 同局域网传文件
-      image: https://www.snap-drop.net/favicon.ico
     - name: Free Compress
       link: https://freecompress.com
       description: 文件压缩
