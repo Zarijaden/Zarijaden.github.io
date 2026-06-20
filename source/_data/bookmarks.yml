@@ -23,7 +23,7 @@
     - name: Deepseek
       link: https://cdn.deepseek.com/chat/icon.png
       description: 
-      image: https://chat.deepseek.com/favicon.ico
+      image: https://www.deepseek.com/favicon.ico
     - name: Kimi
       link: https://www.kimi.com/
       description: 
@@ -42,18 +42,14 @@
       link: https://www.mibei77.com/
       description: 
       image: https://www.mibei77.com/wp-content/uploads/2026/04/2026040203154996.png
-    - name: Shareclash
-      link: https://shareclash.com/
+    - name: v2raydog
+      link: https://v2raydog.com/
       description: 
-      image: https://shareclash.com/favicon.ico
+      image: https://v2raydog.com/wp-content/themes/mkBlog/static/images/default_avatar.jpg
     - name: V2raynews
       link: https://v2raynews.com/
       description: 
       image: https://v2raynews.com/favicon.ico
-    - name: ClashSSR
-      link: https://clashshare.net/
-      description: 
-      image: https://clashshare.net/favicon.ico
     - name: Free Proxy
       link: https://github.com/crossxx-labs/free-proxy
       description: 
