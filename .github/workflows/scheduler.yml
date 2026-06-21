@@ -1,0 +1,29 @@
+name: Scheduler
+
+on:
+  schedule:
+    - cron: "0 17 * * 5"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Sync
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: sync.yml
+          token: ${{ secrets.SYNC_TOKEN }}
+
+      - name: Wait before Deploy
+        run: sleep 60
+
+      - name: Trigger Deploy
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: deploy.yml
+          token: ${{ secrets.SYNC_TOKEN }}
