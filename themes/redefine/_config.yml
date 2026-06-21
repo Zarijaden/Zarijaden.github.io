@@ -228,7 +228,7 @@ navbar:
     About:
       path: https://about.zarijaden.cc.cd
       icon: fa-regular fa-user
-    Links:
+    友链:
       path: /links/
       icon: fa-regular fa-link
 
