@@ -185,8 +185,6 @@ home_banner:
     links:
       - icon: github # can also be "fa-brands fa-github"
         url: https://github.com/Zarijaden
-      - icon: instagram
-        url: https://instagram.com/Zarijaden
       - icon: email
         url: Zarijaden@163.com
       - icon: fa-brands fa-bilibili
