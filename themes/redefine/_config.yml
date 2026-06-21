@@ -235,7 +235,7 @@ navbar:
       icon: fa-regular fa-link
 
     更多: 
-      icon: fa-solid fa-circle-plus
+      icon: fa-regular fa-circle-plus
       submenus:
         gh链接转换器: /gh-cf/
         
