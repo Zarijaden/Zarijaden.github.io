@@ -230,20 +230,18 @@ navbar:
     About:
       path: https://about.zarijaden.cc.cd
       icon: fa-regular fa-user
-    Bookmarks:
-      icon: fa-solid fa-bookmark 
-      path: /bookmarks/
-    相册:
-      icon: fa-solid fa-image 
-      path: /masonry/
-    时间轴:
-      icon: fa-solid fa-code-branch 
-      path: /timeline/
+    Links:
+      path: /links/
+      icon: fa-regular fa-link
+
     更多: 
       icon: fa-solid fa-circle-plus
       submenus:
         gh链接转换器: /gh-cf/
-        设置: /hpp/admin/login
+        
+        Bookmarks: /bookmarks/
+        相册: /masonry/
+        时间轴: /timeline/
     #   submenus:
     #     Link1: /link1
     #     Link2: /link2
@@ -275,10 +273,9 @@ home:
       Tags:
         path: /tags
         icon: fa-regular fa-tags # can be empty
-      Links:
-        path: /links/
-        icon: fa-regular fa-link
-      # Categories: 
+      Dash: 
+        path: /hpp/admin/login
+        icon: fa-redular fa-gear
       #   path: /categories 
       #   icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
